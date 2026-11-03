@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /f1/
+Disallow: /f2/
+Disallow: /e1/
+Disallow: /flyer/
