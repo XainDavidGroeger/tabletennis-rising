@@ -1,11 +1,15 @@
 // Links und Zähler an EINER Stelle. Leere Werte = Knopf zeigt „bald“ und ist nicht klickbar.
 const LINKS = {
-  steam: "",       // z. B. "https://store.steampowered.com/app/1234560/Tabletennis_The_Rising/"
+  steam: "",       // z. B. "https://store.steampowered.com/app/1234560/Rising_Spin/"
   android: "",     // erst Google-Gruppe für den geschlossenen Test, später Play-Store-Link
   appstore: "",    // App-Store-Link (nach Launch)
   appstorePt: "",  // Anbieter-Token (pt=) aus App Store Connect für Kampagnenlinks
   discord: "",     // Einladungslink ohne Ablauf, z. B. "https://discord.gg/xxxx"
-  goatcounter: "", // z. B. "tabletennis-rising" → zählt über https://tabletennis-rising.goatcounter.com
+  // Seite /tester (Android-Test): Platzhalter, David trägt die drei Links ein
+  testerGroup: "",   // Google Group, z. B. "https://groups.google.com/g/rising-spin-tester"
+  testerOptin: "",   // Opt-in-Link des geschlossenen Tests aus der Play Console, z. B. "https://play.google.com/apps/testing/<paket>"
+  discordTester: "", // Einladung direkt in #android-tester (sonst wie discord)
+  goatcounter: "", // z. B. "rising-spin" → zählt über https://rising-spin.goatcounter.com
 };
 
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign"];
