@@ -4,11 +4,11 @@ const LINKS = {
   android: "",     // erst Google-Gruppe für den geschlossenen Test, später Play-Store-Link
   appstore: "",    // App-Store-Link (nach Launch)
   appstorePt: "",  // Anbieter-Token (pt=) aus App Store Connect für Kampagnenlinks
-  discord: "https://discord.gg/eeMNsZ2RVr",     // Einladungslink ohne Ablauf, z. B. "https://discord.gg/xxxx"
+  discord: "https://discord.gg/ZTBFkWCBxx",     // Einladungslink ohne Ablauf, z. B. "https://discord.gg/xxxx"
   // Seite /tester (Android-Test): Platzhalter, David trägt die drei Links ein
   testerGroup: "",   // Google Group, z. B. "https://groups.google.com/g/rising-spin-tester"
   testerOptin: "",   // Opt-in-Link des geschlossenen Tests aus der Play Console, z. B. "https://play.google.com/apps/testing/<paket>"
-  discordTester: "https://discord.gg/ZqfFTGsee3", // Einladung direkt in #android-tester (sonst wie discord)
+  discordTester: "https://discord.gg/ZTBFkWCBxx", // Einladung direkt in #android-tester (sonst wie discord)
   goatcounter: "", // z. B. "rising-spin" → zählt über https://rising-spin.goatcounter.com
 };
 
