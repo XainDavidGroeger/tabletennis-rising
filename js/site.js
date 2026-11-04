@@ -5,12 +5,34 @@ const LINKS = {
   appstore: "",    // App-Store-Link (nach Launch)
   appstorePt: "",  // Anbieter-Token (pt=) aus App Store Connect für Kampagnenlinks
   discord: "https://discord.gg/ZTBFkWCBxx",     // Einladungslink ohne Ablauf, z. B. "https://discord.gg/xxxx"
+  // Kanäle: erscheinen als Symbolleiste im Footer jeder Seite und auf /links. Leer = nicht anzeigen.
+  youtube: "https://www.youtube.com/channel/UCbypCdB_ChAtPiVcS55eVgg",
+  tiktok: "https://www.tiktok.com/@risingspin",
+  instagram: "https://www.instagram.com/risingspin",
+  facebook: "https://www.facebook.com/profile.php?id=61596075187460", // bei Kurznamen tauschen (facebook.com/risingspin)
   // Seite /tester (Android-Test): Platzhalter, David trägt die drei Links ein
   testerGroup: "",   // Google Group, z. B. "https://groups.google.com/g/rising-spin-tester"
   testerOptin: "",   // Opt-in-Link des geschlossenen Tests aus der Play Console, z. B. "https://play.google.com/apps/testing/<paket>"
   discordTester: "https://discord.gg/ZTBFkWCBxx", // Einladung direkt in #android-tester (sonst wie discord)
   goatcounter: "", // z. B. "rising-spin" → zählt über https://rising-spin.goatcounter.com
 };
+
+// Strich-Symbole (24er-Raster, currentColor), damit sie zur Schrift passen.
+const ICONS = {
+  steam: '<circle cx="12" cy="12" r="10"/><circle cx="15.5" cy="9" r="2.5"/><path d="M2.5 14.5 8 17m5.5-6.5L9 15.5"/><circle cx="8.5" cy="16.5" r="2"/>',
+  discord: '<path d="M8 6.5c-1.6.3-3 .8-4 1.5C2.6 10.5 2 13.5 2 16.5c1.4 1.4 3.4 2.3 5 2.5l1.2-2M16 6.5c1.6.3 3 .8 4 1.5 1.4 2.5 2 5.5 2 8.5-1.4 1.4-3.4 2.3-5 2.5l-1.2-2M6.5 16c3.6 1.6 7.4 1.6 11 0M7.5 8.3c3-1 6-1 9 0"/><circle cx="9" cy="12.5" r="1.3"/><circle cx="15" cy="12.5" r="1.3"/>',
+  youtube: '<path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 50 50 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 50 50 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>',
+  tiktok: '<path d="M14 3v12a4 4 0 1 1-4-4"/><path d="M14 3c.5 2.8 2.3 4.5 5 5"/>',
+  instagram: '<rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+  facebook: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+};
+const SOCIAL = [["youtube", "YouTube"], ["tiktok", "TikTok"], ["instagram", "Instagram"], ["facebook", "Facebook"], ["discord", "Discord"]];
+// Website-Wurzel aus dem Pfad dieses Skripts (Seiten liegen unterschiedlich tief).
+const ROOT = new URL("..", document.currentScript ? document.currentScript.src : location.href).href;
+
+function icon(kind) {
+  return `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[kind]}</svg>`;
+}
 
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign"];
 
@@ -40,7 +62,22 @@ function withUtm(kind, url, utm) {
   return u.toString();
 }
 
+// Kanal-Leiste unter dem Footer jeder Seite, plus Verweis auf den Link-Hub /links.
+function initSocial() {
+  const foot = document.querySelector(".foot .wrap");
+  if (!foot) return;
+  const en = document.documentElement.lang === "en";
+  const nav = document.createElement("nav");
+  nav.className = "social";
+  nav.setAttribute("aria-label", en ? "Channels" : "Kanäle");
+  nav.innerHTML = SOCIAL.filter(([kind]) => LINKS[kind])
+    .map(([kind, name]) => `<a data-link="${kind}" title="${name}">${icon(kind)}<span>${name}</span></a>`).join("")
+    + `<a class="social__all" href="${ROOT}${en ? "en/links/" : "links/"}">${en ? "All links" : "Alle Links"}</a>`;
+  foot.querySelector(".foot__in").after(nav);
+}
+
 function initLinks(utm) {
+  document.querySelectorAll("[data-icon]").forEach((a) => a.insertAdjacentHTML("afterbegin", icon(a.dataset.icon)));
   document.querySelectorAll("[data-link]").forEach((a) => {
     const kind = a.dataset.link;
     const url = LINKS[kind];
@@ -104,6 +141,7 @@ function initCounter() {
 }
 
 const utm = readUtm();
+initSocial();
 initLinks(utm);
 initPlayer();
 initLightbox();
