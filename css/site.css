@@ -489,3 +489,7 @@ html[lang="en"] .faq .ai summary::before { content: "AI"; }
 .store-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
 .launch { display: inline-block; margin: 0 0 14px; padding: 4px 14px; background: var(--gold); color: var(--ink); border: 3px solid var(--edge); border-radius: 10px; transform: skewX(-8deg); font: italic 800 17px/1.4 var(--head); }
 .launch > span { display: inline-block; transform: skewX(8deg); }
+
+/* Hero-Logo als Grafik (docs/marketing/brand/rising-spin-logo.svg, wie im Trailer-Outro). Kopf und Fuß bleiben beim Text-Logo (David 24.11.). */
+.logo img { display: block; width: auto; height: auto; }
+.hero h1.logo img { width: clamp(240px, 40vw, 560px); filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .45)); }
