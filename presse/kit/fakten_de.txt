@@ -1,0 +1,33 @@
+RISING SPIN · Pressefakten (Stand: November 2026)
+
+Titel:        Rising Spin
+Entwickler:   David Gröger, Solo-Entwickler und Vereinsspieler aus Deutschland
+Genre:        Tischtennis-Story-RPG im Anime-Stil
+Plattformen:  iPhone/iPad und Android ab 15.12.2026. PC (Steam) folgt 2027.
+Preis:        Kostenlos laden, Kapitel 1 gratis. Kapitel 1 bis 4 als Einmalkauf für 4,99 €. Keine Werbung, kein Abo.
+Umfang:       Kapitel 1 bis 4, ungefähr 10 Stunden Spielzeit
+Sprachen:     Deutsch, Englisch
+Steuerung:    Touch, Controller
+Engine:       Godot 4
+Kontakt:      groeger.david@gmail.com
+
+Kurzbeschreibung
+Das Tischtennis-Anime-RPG: In Rising Spin wächst Dave vom Kellerkind zum Vereinsspieler mit großem Traum. Mit echtem Schlag-Timing, Spezialschlägen, Liga, Doppel, Turnieren und Minispielen.
+
+Beschreibung
+Dave ist zehn und spielt im Keller gegen Papa. Dann schleppt ihn seine Nachbarin Karina zum Probetraining im TTC Dorf. Dort lässt ihn der brummige Trainer Kowalski erst mal nur Beinarbeit üben, und Vereinsmeister Mats nennt ihn nur „Kellerkind“.
+
+Rising Spin verbindet eine Welt zum Erkunden (Dorf, Park, Schule, Vereinshalle) mit Matches, die sich an echtem Tischtennis orientieren: Topspin, Schupf, Block und Flip brauchen sauberes Timing, Spin muss gelesen werden. Training läuft über Minispiele, Spieltage und Turniere stehen im Kalender. Jedes Kapitel beginnt mit einem eigenen Anime-Opening.
+
+Der Entwickler spielt selbst seit Jahren im Verein. Der Ton ist warmherzig und lustig: deutsches Vereinsleben mit Turnhallengeruch, Bratwurst am Spieltag und Rentnern mit langen Noppen.
+
+Entstehung
+Story, Dialoge, Spieldesign und Code sind von David. Grafik und Musik entstehen mit KI-Werkzeugen, er wählt aus, bessert nach und baut alles ins Spiel ein.
+
+Links
+Website:    https://xaindavidgroeger.github.io/tabletennis-rising/
+Pressekit:  https://xaindavidgroeger.github.io/tabletennis-rising/presse/
+Trailer:    https://www.youtube.com/watch?v=Lw8Z7212lfw
+App Store:  https://apps.apple.com/de/app/rising-spin/id6830364220
+
+Bilder in diesem Paket sind frei für die Berichterstattung über das Spiel.

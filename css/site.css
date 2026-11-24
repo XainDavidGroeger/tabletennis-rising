@@ -458,3 +458,34 @@ html[lang="en"] .faq .ai summary::before { content: "AI"; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .ball-track { display: none; }
 }
+
+/* --- Trailer über YouTube (Klick lädt erst dann youtube-nocookie.com) ---------------- */
+.player iframe { width: 100%; height: 100%; border: 0; display: block; }
+.yt { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; }
+.yt__play {
+  position: absolute; top: 50%; left: 50%; width: 84px; height: 84px; transform: translate(-50%, -50%);
+  border-radius: 50%; background: var(--coral); border: 4px solid var(--edge); box-shadow: 0 6px 0 var(--edge);
+  transition: transform .15s;
+}
+.yt__play::after {
+  content: ""; position: absolute; top: 50%; left: 54%; transform: translate(-50%, -50%);
+  border-left: 26px solid var(--white); border-top: 16px solid transparent; border-bottom: 16px solid transparent;
+}
+.yt:hover .yt__play, .yt:focus-visible .yt__play { transform: translate(-50%, -50%) scale(1.08); }
+.yt__note {
+  position: absolute; right: 10px; bottom: 10px; padding: 2px 10px; border-radius: 8px;
+  background: rgba(36, 23, 13, .8); color: var(--paper); font: 700 13px/1.6 var(--body);
+}
+@media (max-width: 520px) { .yt__play { width: 64px; height: 64px; } .yt__play::after { border-left-width: 20px; border-top-width: 12px; border-bottom-width: 12px; } }
+
+/* Handy-Screenshots (2622 × 1206, breiter als 16:9) */
+.shots--phone { grid-template-columns: repeat(2, 1fr); }
+.shots--phone .shot img { aspect-ratio: 2622 / 1206; }
+@media (max-width: 760px) { .shots--phone { grid-template-columns: 1fr; } }
+.downloads--phone img { aspect-ratio: 2622 / 1206; }
+
+/* Store-Knöpfe */
+.store-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+.launch { display: inline-block; margin: 0 0 14px; padding: 4px 14px; background: var(--gold); color: var(--ink); border: 3px solid var(--edge); border-radius: 10px; transform: skewX(-8deg); font: italic 800 17px/1.4 var(--head); }
+.launch > span { display: inline-block; transform: skewX(8deg); }

@@ -1,8 +1,8 @@
 // Links und Zähler an EINER Stelle. Leere Werte = Knopf zeigt „bald“ und ist nicht klickbar.
 const LINKS = {
-  steam: "",       // z. B. "https://store.steampowered.com/app/1234560/Rising_Spin/"
-  android: "",     // erst Google-Gruppe für den geschlossenen Test, später Play-Store-Link
-  appstore: "",    // App-Store-Link (nach Launch)
+  steam: "",       // PC folgt 2027. Dann z. B. "https://store.steampowered.com/app/1234560/Rising_Spin/"
+  android: "",     // Google-Play-Link, sobald die Seite öffentlich ist: "https://play.google.com/store/apps/details?id=de.davidgroeger.risingspin"
+  appstore: "https://apps.apple.com/app/rising-spin/id6830364220", // seit 24.11. öffentlich (Vorbestellung), Start 15.12.2026
   appstorePt: "",  // Anbieter-Token (pt=) aus App Store Connect für Kampagnenlinks
   discord: "https://discord.gg/ZTBFkWCBxx",     // Einladungslink ohne Ablauf, z. B. "https://discord.gg/xxxx"
   // Kanäle: erscheinen als Symbolleiste im Footer jeder Seite und auf /links. Leer = nicht anzeigen.
@@ -14,6 +14,7 @@ const LINKS = {
   testerGroup: "",   // Google Group, z. B. "https://groups.google.com/g/rising-spin-tester"
   testerOptin: "",   // Opt-in-Link des geschlossenen Tests aus der Play Console, z. B. "https://play.google.com/apps/testing/<paket>"
   discordTester: "https://discord.gg/ZTBFkWCBxx", // Einladung direkt in #android-tester (sonst wie discord)
+  trailer: "Lw8Z7212lfw", // YouTube-ID des Gameplay-Trailers (lädt erst nach Klick, über youtube-nocookie.com)
   goatcounter: "", // z. B. "rising-spin" → zählt über https://rising-spin.goatcounter.com
 };
 
@@ -93,18 +94,33 @@ function initLinks(utm) {
   });
 }
 
-// Trailer und Kapitel-Intros: Kachel antippen = Video in den großen Player laden und starten.
+// Trailer (YouTube) und Kapitel-Intros (eigene MP4): Kachel antippen = Video in den großen Player laden.
+// YouTube lädt erst nach einem Klick (youtube-nocookie.com), vorher zeigt die Seite nur das eigene Vorschaubild.
 function initPlayer() {
-  const video = document.querySelector("[data-player]");
+  const box = document.querySelector("[data-player]");
   const title = document.querySelector("[data-player-title]");
-  if (!video) return;
+  if (!box) return;
+  const en = document.documentElement.lang === "en";
+  const facade = (poster) => {
+    box.innerHTML = `<button class="yt" type="button" aria-label="${en ? "Play trailer (loads YouTube)" : "Trailer abspielen (lädt YouTube)"}">`
+      + `<img src="${poster}" alt="" loading="lazy"><span class="yt__play" aria-hidden="true"></span>`
+      + `<span class="yt__note">${en ? "Plays on YouTube" : "Läuft über YouTube"}</span></button>`;
+    box.querySelector(".yt").addEventListener("click", youtube);
+  };
+  const youtube = () => {
+    box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${LINKS.trailer}?autoplay=1&rel=0&hl=${en ? "en" : "de"}"`
+      + ` title="Rising Spin Gameplay Trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  };
+  facade(box.dataset.poster);
   document.querySelectorAll(".clip").forEach((b) => b.addEventListener("click", () => {
     document.querySelectorAll(".clip").forEach((c) => c.classList.toggle("is-active", c === b));
-    video.poster = b.dataset.poster;
-    video.src = b.dataset.video;
     if (title) title.textContent = b.dataset.title;
-    video.play();
-    video.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (b.dataset.yt !== undefined) {
+      youtube();
+    } else {
+      box.innerHTML = `<video controls playsinline autoplay poster="${b.dataset.poster}" src="${b.dataset.video}"></video>`;
+    }
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
   }));
 }
 

@@ -1,0 +1,33 @@
+RISING SPIN · Press facts (as of November 2026)
+
+Title:       Rising Spin
+Developer:   David Gröger, solo developer and club player from Germany
+Genre:       Table tennis story RPG in anime style
+Platforms:   iPhone/iPad and Android on December 15, 2026. PC (Steam) follows in 2027.
+Price:       Free to download, chapter 1 free. Chapters 1 to 4 as a one-time purchase for $4.99 / €4.99. No ads, no subscription.
+Length:      Chapters 1 to 4, about 10 hours
+Languages:   English, German
+Controls:    Touch, controller
+Engine:      Godot 4
+Contact:     groeger.david@gmail.com
+
+Short description
+The table tennis anime RPG: in Rising Spin, Dave grows from basement kid to club player with a big dream. With real shot timing, special shots, league play, doubles, tournaments and minigames.
+
+Description
+Dave is ten and plays his dad in the basement. Then his neighbor Karina drags him to a trial session at TTC Dorf, where grumpy coach Kowalski makes him practice footwork first, and club champion Mats just calls him "basement kid".
+
+Rising Spin combines a world to explore (village, park, school, club hall) with matches built on real table tennis: topspin, push, block and flick need clean timing, and spin has to be read. Training happens in minigames, match days and tournaments are on the calendar. Every chapter starts with its own anime opening.
+
+The developer has played in a club for years. The tone is warm and funny: German club life with the smell of the gym, bratwurst on match day and pensioners with long pimples.
+
+How it is made
+Story, dialogue, game design and code are by David. Art and music are made with AI tools; he picks, edits and builds everything into the game.
+
+Links
+Website:     https://xaindavidgroeger.github.io/tabletennis-rising/en/
+Press kit:   https://xaindavidgroeger.github.io/tabletennis-rising/en/press/
+Trailer:     https://www.youtube.com/watch?v=Lw8Z7212lfw
+App Store:   https://apps.apple.com/app/rising-spin/id6830364220
+
+Images in this package are free to use for coverage of the game.
