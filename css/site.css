@@ -493,3 +493,80 @@ html[lang="en"] .faq .ai summary::before { content: "AI"; }
 /* Hero-Logo als Grafik (docs/marketing/brand/rising-spin-logo.svg, wie im Trailer-Outro). Kopf und Fuß bleiben beim Text-Logo (David 24.11.). */
 .logo img { display: block; width: auto; height: auto; }
 .hero h1.logo img { width: clamp(240px, 40vw, 560px); filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .45)); }
+
+/* --- Online-Rangliste /rangliste, /en/leaderboard (js/rangliste.js) --------------------- */
+.ranking { max-width: 920px; margin-inline: auto; }
+.rk-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-bottom: 16px; color: var(--soft); font-size: 15px; }
+.rk-season { padding: 2px 14px; background: var(--ink); color: var(--gold); border-radius: 99px; font: italic 800 16px/1.5 var(--head); }
+.rk-demo { padding: 1px 10px; border: 2px dashed var(--coral); border-radius: 99px; color: var(--coral); }
+.rk-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.rk-chip {
+  min-height: 40px; padding: 4px 14px; border: 3px solid var(--edge); border-radius: 99px; background: var(--paper);
+  box-shadow: 0 3px 0 var(--edge); font: 800 15px/1.2 var(--body); color: var(--ink); cursor: pointer;
+}
+.rk-chip b { margin-left: 2px; padding: 0 7px; border-radius: 99px; background: var(--paper2); font-size: 13px; }
+.rk-chip.is-on { background: var(--coral); color: var(--white); }
+.rk-chip.is-on b { background: rgba(255, 253, 246, .25); }
+.rk-chip:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--edge); }
+.rk-count { margin: 0 0 10px; color: var(--soft); font-size: 15px; }
+.rk-none { padding: 24px 0; color: var(--soft); text-align: center; }
+.rk-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rk-row {
+  display: grid; grid-template-columns: 56px 1fr 84px 70px 84px; gap: 10px; align-items: center;
+  padding: 10px 14px; background: var(--paper); border: 3px solid var(--edge); border-radius: 14px; box-shadow: 0 3px 0 var(--shade);
+}
+.rk-row--head { background: none; border: 0; box-shadow: none; padding-block: 0; font: italic 800 13px/1.4 var(--head); color: var(--soft); text-transform: uppercase; }
+.rk-row--head span:nth-child(n+3), .rk-rrp, .rk-games, .rk-wl { text-align: right; }
+.rk-rank {
+  justify-self: start; min-width: 40px; height: 40px; padding: 0 6px; display: grid; place-items: center; border-radius: 99px;
+  background: var(--paper2); border: 3px solid var(--edge); font: italic 900 18px/1 var(--head);
+}
+.rk-row--p1 { box-shadow: 0 0 0 3px var(--gold), 0 4px 0 var(--shade); }
+.rk-row--p1 .rk-rank { background: var(--gold); }
+.rk-row--p2 .rk-rank { background: #DCE3E8; }
+.rk-row--p3 .rk-rank { background: #E3A877; }
+.rk-name { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; min-width: 0; }
+.rk-name strong { font-size: 18px; overflow-wrap: anywhere; }
+.rk-rrp { font: italic 900 20px/1 var(--head); }
+.rk-rrp i { margin-left: 2px; color: var(--soft); font-size: 14px; }
+.rk-games small { display: none; }
+.rk-wl .w { color: #3E7F2A; } .rk-wl .l { color: #C0473A; }
+.rk-prov {
+  display: inline-block; padding: 0 8px; border: 2px dashed var(--soft); border-radius: 99px;
+  font: 800 12px/1.5 var(--body); color: var(--soft); text-transform: uppercase; letter-spacing: .03em;
+}
+.rk-legend { margin: 16px 0 0; font-size: 14px; color: var(--soft); }
+/* Liga-Abzeichen: schräges Schild, Farbe steigt von Kreisliga (0) bis Bundesliga (5). */
+.lg {
+  --lg: var(--faint); --lg-fg: var(--ink);
+  display: inline-block; padding: 0 10px; background: var(--lg); color: var(--lg-fg);
+  border: 2px solid var(--edge); transform: skewX(-14deg); font: italic 800 13px/1.6 var(--head); white-space: nowrap;
+}
+.lg > span { display: inline-block; transform: skewX(14deg); }
+.lg--1 { --lg: #A9D18E; }
+.lg--2 { --lg: var(--teal); --lg-fg: var(--white); }
+.lg--3 { --lg: #7B6CC4; --lg-fg: var(--white); }
+.lg--4 { --lg: var(--coral); --lg-fg: var(--white); }
+.lg--5 { --lg: var(--gold); box-shadow: 0 0 0 2px var(--gold), 2px 3px 0 var(--edge); }
+.rk-empty { text-align: center; display: grid; justify-items: center; gap: 6px; padding: 36px 24px; }
+.rk-empty h2 { font-size: clamp(24px, 4vw, 32px); margin: 8px 0 0; }
+.rk-empty p { max-width: 32em; margin: 0; color: var(--soft); }
+.rk-empty__ball {
+  width: 48px; height: 48px; border-radius: 50%; border: 4px solid var(--edge);
+  background: radial-gradient(circle at 35% 30%, #fff 0 30%, #FBE7C9 70%, #E9C9A0 100%);
+  animation: rk-hop .9s cubic-bezier(.33, 0, .66, 0) infinite alternate;
+}
+@keyframes rk-hop { from { transform: translateY(-14px); } to { transform: translateY(0); } }
+.rk-ladder { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+@media (max-width: 620px) {
+  .rk-row { grid-template-columns: 44px 1fr auto; grid-template-areas: "r n p" "r n w"; gap: 2px 10px; padding: 10px 12px; }
+  .rk-row--head { display: none; }
+  .rk-rank { grid-area: r; min-width: 36px; height: 36px; font-size: 16px; }
+  .rk-name { grid-area: n; }
+  .rk-name strong { font-size: 16px; width: 100%; }
+  .rk-rrp { grid-area: p; }
+  .rk-games { display: none; }
+  .rk-wl { grid-area: w; font-size: 14px; }
+  .rk-filter { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--gutter)); padding: 2px var(--gutter) 8px; scrollbar-width: none; }
+  .rk-chip { min-height: 44px; flex: none; }
+}
